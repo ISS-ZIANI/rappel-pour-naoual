@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐝 for my cute bee 🐝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive, sans-serif;
+            background: #ffb6c1;
+            transition: background-color 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Cute bee logo */
+        .cute-bee {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            filter: drop-shadow(0 10px 15px rgba(255,105,180,0.3));
+            animation: float 3s infinite ease-in-out;
+            z-index: 10;
+        }
+        
+        .cute-bee-small {
+            position: absolute;
+            font-size: 40px;
+            animation: float 4s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 60px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            border: 4px solid white;
+            box-shadow: 0 15px 30px rgba(255,105,180,0.2);
+            position: relative;
+            z-index: 5;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 0 #ff69b4;
+            margin-bottom: 30px;
+        }
+        
+        .message {
+            background: white;
+            padding: 30px;
+            border-radius: 40px;
+            margin: 20px 0;
+            font-size: 2em;
+            color: #ff69b4;
+            border: 3px dashed #ffb6c1;
+            box-shadow: 0 5px 0 #ff69b4;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+        
+        .bee-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .bee-row span {
+            font-size: 50px;
+            animation: bounce 2s infinite;
+        }
+        
+        .bee-row span:nth-child(2) { animation-delay: 0.3s; }
+        .bee-row span:nth-child(3) { animation-delay: 0.6s; }
+        .bee-row span:nth-child(4) { animation-delay: 0.9s; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            font-family: inherit;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #ff1493;
+            transition: all 0.1s;
+        }
+        
+        button:active {
+            transform: translateY(8px);
+            box-shadow: 0 0 0 #ff1493;
+        }
+        
+        .reminder {
+            font-size: 1.3em;
+            color: white;
+            text-shadow: 1px 1px 0 #ff69b4;
+            margin-top: 20px;
+        }
+        
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            pointer-events: none;
+            animation: heartFloat 2s ease-out forwards;
+        }
+        
+        @keyframes heartFloat {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body id="body">
+    <!-- Cute big bee logo -->
+    <div class="cute-bee">🐝</div>
+    
+    <!-- Small bees floating around -->
+    <div class="cute-bee-small" style="top: 10%; right: 10%;">🌸</div>
+    <div class="cute-bee-small" style="bottom: 15%; left: 10%;">🐝</div>
+    <div class="cute-bee-small" style="bottom: 20%; right: 15%;">✨</div>
+    <div class="cute-bee-small" style="top: 30%; left: 5%;">🍯</div>
+    <div class="cute-bee-small" style="top: 70%; right: 5%;">🐝</div>
+    
+    <div class="container">
+        <h1>🌸 for my bee 🌸</h1>
+        
+        <!-- Cute bee row -->
+        <div class="bee-row">
+            <span>🐝</span>
+            <span>🌸</span>
+            <span>🐝</span>
+            <span>🌸</span>
+        </div>
+        
+        <!-- Message changes here -->
+        <div class="message" id="message">
+            you can do it!
+        </div>
+        
+        <!-- Reminder that she's a cute bee -->
+        <div class="reminder">
+            ⭐ remember you're a cute bee ⭐
+        </div>
+        
+        <!-- Bee row again -->
+        <div class="bee-row">
+            <span>🍯</span>
+            <span>🐝</span>
+            <span>✨</span>
+            <span>🐝</span>
+        </div>
+        
+        <!-- Button to change message -->
+        <button onclick="newMessage()">
+            click for good vibes ✨
+        </button>
+    </div>
+
+    <script>
+        // Simple general messages
+        const messages = [
+            "you can do it!",
+            "you are strong!",
+            "you've got this!",
+            "keep going!",
+            "you are enough!",
+            "you matter!",
+            "believe in you!",
+            "you're amazing!",
+            "you're doing great!",
+            "you're loved!",
+            "you're special!",
+            "don't give up!",
+            "you're a star!",
+            "you're perfect!",
+            "shine bright!"
+        ];
+        
+        // Cute colors
+        const colors = [
+            '#ffb6c1', // baby pink
+            '#ffd1dc', // lighter pink
+            '#ffe4e1', // misty rose
+            '#fff0f5', // lavender blush
+            '#ffc0cb', // pink
+            '#ffdab9', // peach
+            '#e6e6fa', // lavender
+            '#d8bfd8'  // thistle
+        ];
+        
+        function newMessage() {
+            // Change message
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message').innerHTML = randomMessage;
+            
+            // Change background color
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('body').style.backgroundColor = randomColor;
+            
+            // Create floating hearts
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000);
+                }, i * 50);
+            }
+        }
+        
+        // Change message every 8 seconds automatically
+        setInterval(newMessage, 8000);
+        
+        // Also change when clicking anywhere
+        document.addEventListener('click', newMessage);
+    </script>
+</body>
+</html>
